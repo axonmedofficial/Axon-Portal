@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXON Internal Team Portal</title>
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-silver: #cbd5e1;
+            --accent-blue: #38bdf8;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            width: 260px;
+            height: 100vh;
+            background-color: #0b0f19;
+            border-right: 1px solid var(--border-color);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .logo-area {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .logo-area h1 {
+            font-size: 22px;
+            letter-spacing: 3px;
+            margin: 5px 0;
+            color: var(--accent-silver);
+        }
+
+        .logo-area span {
+            font-size: 9px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            padding: 12px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links li:hover, .nav-links li.active {
+            background-color: var(--bg-card);
+            color: var(--accent-blue);
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        /* Main Workspace Container */
+        .main-content {
+            margin-left: 260px;
+            padding: 40px;
+            box-sizing: border-box;
+            min-height: 100vh;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .welcome-banner h2 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            color: var(--accent-silver);
+        }
+
+        /* Responsive Grid Boxes */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-blue);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .bullet-list {
+            padding-left: 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .bullet-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Functional Button Layouts */
+        .portal-btn {
+            display: inline-block;
+            background-color: #334155;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            transition: background 0.3s;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .portal-btn:hover {
+            background-color: var(--accent-blue);
+            color: #000;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            border-top: 1px dashed var(--border-color);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo-area">
+            <h1>AXON</h1>
+            <span>Team Hub Portal</span>
+        </div>
+        <ul class="nav-links">
+            <li class="active">🏠 Dashboard</li>
+            <li>📚 Academic Vault</li>
+            <li>⏱️ COO Project Tracker</li>
+            <li>📣 Ambassador Desk</li>
+            <li>💼 Member Roster</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="welcome-banner">
+            <h2>Welcome to the AXON Command Workspace</h2>
+            <p style="color: var(--text-secondary); margin: 0; font-size: 14px;">
+                Single Source of Truth for the Executive Board, Departmental Associates, and Campus Ambassadors. Always execute with premium quality.
+            </p>
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <h3>📜 Governance Framework</h3>
+                <p style="font-size: 14px; color: var(--text-secondary);">
+                    Access our official operational rulebook, line of command structures, and compliance expectations anytime.
+                </p>
+                <button class="portal-btn">View Master Charter PDF</button>
+            </div>
+
+            <div class="card">
+                <h3>🎬 Creative & Social Pipeline</h3>
+                <ul class="bullet-list">
+                    <li><strong>Content Wing:</strong> Script drafting for next health reel</li>
+                    <li><strong>Media Wing:</strong> Graphic templates matching silver identity</li>
+                    <li><strong>CMO Desk:</strong> Final design sign-off queue</li>
+                </ul>
+                <button class="portal-btn">Open Marketing Board</button>
+            </div>
+
+            <div class="card">
+                <h3>📊 Registration Database</h3>
+                <p style="font-size: 14px; color: var(--text-secondary);">
+                    Managed by the Joint Secretary. View incoming student cohorts filtered directly by their Google Form interest options.
+                </p>
+                <button class="portal-btn">Open Central Sheets File</button>
+            </div>
+        </div>
+
+        <h2>Specialized Operational Desks</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>1. Academics & Research</h3>
+                <p style="font-size: 13px; color: var(--text-secondary);">Handles study vault entries, research guides, and paper writing structures.</p>
+                <span style="font-size: 11px; color: var(--accent-blue);">Status: Planning Masterclass</span>
+            </div>
+            <div class="card">
+                <h3>2. Media, Design & Production</h3>
+                <p style="font-size: 13px; color: var(--text-secondary);">Manages video post-production editing lanes and informational graphics design.</p>
+                <span style="font-size: 11px; color: var(--accent-blue);">Status: Editing Instagram Reels</span>
+            </div>
+            <div class="card">
+                <h3>3. Content & Social Strategy</h3>
+                <p style="font-size: 13px; color: var(--text-secondary);">Responsible for post descriptions, copywriting blocks, and online story polls.</p>
+                <span style="font-size: 11px; color: var(--accent-blue);">Status: Scripts Approved</span>
+            </div>
+            <div class="card">
+                <h3>4. PR & Campus Outreach</h3>
+                <p style="font-size: 13px; color: var(--text-secondary);">Manages communication pipelines and maps out sister-college networks.</p>
+                <span style="font-size: 11px; color: var(--accent-blue);">Status: Seeding Batch Chats</span>
+            </div>
+            <div class="card">
+                <h3>5. Operations & Tech Support</h3>
+                <p style="font-size: 13px; color: var(--text-secondary);">Coordinates live digital webinar platforms, setups, and attendance files.</p>
+                <span style="font-size: 11px; color: var(--accent-blue);">Status: System Stable</span>
+            </div>
+            <div class="card">
+                <h3>6. Public Health & Field Work</h3>
+                <p style="font-size: 13px; color: var(--text-secondary);">Coordinates health-screening campaigns, field logs, and public drives.</p>
+                <span style="font-size: 11px; color: var(--accent-blue);">Status: Mapping Local Camps</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            AXON Non-Governmental Organization Workspace • Operational Dashboard Version 1.0 • Academic Year 2026
+        </div>
+    </div>
+
+</body>
+</html>
