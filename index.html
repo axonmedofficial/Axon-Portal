@@ -1,391 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AXON | Executive Command & Operations Portal</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AXON | Executive Command Portal</title>
 
     <style>
         :root {
-            --bg-deep: #090d16;
-            --bg-surface: #131b2e;
-            --bg-card: rgba(30, 41, 59, 0.7);
-            --border-glow: rgba(56, 189, 248, 0.2);
-            --border-muted: #22314d;
+
+            --bg-main: #070b14;
+            --bg-card: #121a2b;
+            --bg-card-light: #172235;
+
+            --border: #24324d;
+
             --text-main: #f1f5f9;
             --text-muted: #94a3b8;
-            --silver-neon: #cbd5e1;
-            --blue-neon: #38bdf8;
-            --emerald-neon: #34d399;
-            --amber-neon: #fbbf24;
+
+            --blue: #38bdf8;
+            --emerald: #34d399;
+            --amber: #fbbf24;
         }
 
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-deep);
+
+            font-family: "Segoe UI", sans-serif;
+
+            background: var(--bg-main);
+
             color: var(--text-main);
-            margin: 0;
-            padding: 0;
+
             display: flex;
+
             min-height: 100vh;
+
             overflow-x: hidden;
         }
 
-        /* Sidebar */
+        /* SIDEBAR */
+
         .sidebar {
+
             width: 280px;
-            background-color: #060911;
-            border-right: 1px solid var(--border-muted);
-            display: flex;
-            flex-direction: column;
+
+            background: #050811;
+
+            border-right: 1px solid var(--border);
+
             position: fixed;
+
             height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+
             z-index: 100;
         }
 
-        .brand-header {
-            padding: 30px 24px;
+        .brand {
+
+            padding: 34px 24px;
+
             text-align: center;
-            border-bottom: 1px solid var(--border-muted);
+
+            border-bottom: 1px solid var(--border);
         }
 
-        .brand-logo-text {
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: 5px;
-            color: transparent;
-            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            margin: 0;
-        }
+        .brand h1 {
 
-        .brand-tagline {
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--blue-neon);
-            margin-top: 5px;
-            font-weight: 600;
-        }
-
-        .nav-menu {
-            list-style: none;
-            padding: 20px 12px;
-            margin: 0;
-            flex-grow: 1;
-        }
-
-        .nav-item {
-            margin-bottom: 6px;
-        }
-
-        .nav-item a {
-            display: flex;
-            align-items: center;
-            padding: 14px 16px;
-            color: var(--text-muted);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-item a:hover,
-        .nav-item.active a {
-            background-color: var(--bg-surface);
-            color: var(--text-main);
-            box-shadow: inset 4px 0 0 var(--blue-neon);
-        }
-
-        .sidebar-footer {
-            padding: 20px;
-            border-top: 1px solid var(--border-muted);
-            font-size: 11px;
-            color: var(--text-muted);
-            text-align: center;
-            background-color: #04060b;
-        }
-
-        /* Workspace */
-        .workspace {
-            margin-left: 280px;
-            flex-grow: 1;
-            padding: 40px;
-            max-width: 1400px;
-            width: 100%;
-        }
-
-        .premium-banner {
-            background: linear-gradient(
-                135deg,
-                rgba(19, 27, 46, 0.8) 0%,
-                rgba(9, 13, 22, 0.9) 100%
-            );
-
-            border: 1px solid var(--border-glow);
-            border-radius: 14px;
-            padding: 32px;
-            margin-bottom: 35px;
-            backdrop-filter: blur(8px);
-        }
-
-        .premium-banner h2 {
-            margin: 0 0 10px 0;
             font-size: 28px;
-            font-weight: 700;
+
+            font-weight: 800;
+
+            letter-spacing: 5px;
+
+            background: linear-gradient(135deg, #fff, #94a3b8);
+
+            -webkit-background-clip: text;
+
+            color: transparent;
         }
 
-        .premium-banner p {
-            color: var(--text-muted);
-            margin: 0;
-            font-size: 14px;
-            max-width: 850px;
-            line-height: 1.6;
-        }
+        .brand p {
 
-        /* Section Title */
-        .section-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--blue-neon);
-            padding-left: 12px;
-        }
+            color: var(--blue);
 
-        /* Macro Cards */
-        .macro-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
-        }
+            font-size: 10px;
 
-        .macro-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-muted);
-            border-radius: 12px;
-            padding: 24px;
-            transition: all 0.3s ease;
-        }
+            margin-top: 6px;
 
-        .macro-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--blue-neon);
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.08);
-        }
+            letter-spacing: 2px;
 
-        .macro-card h3 {
-            margin: 0 0 12px 0;
-            font-size: 16px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--blue-neon);
         }
 
-        .macro-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 20px;
+        .menu {
+
+            padding: 20px 12px;
+
+            list-style: none;
+
+            flex-grow: 1;
         }
 
-        .action-btn {
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: var(--text-main);
+        .menu li {
+
+            margin-bottom: 8px;
+        }
+
+        .menu a {
+
             text-decoration: none;
-            padding: 13px 20px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            border: 1px solid var(--border-muted);
-            transition: all 0.25s ease;
-        }
 
-        .action-btn:hover {
-            background: var(--blue-neon);
-            color: var(--bg-deep);
-            border-color: var(--blue-neon);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-        }
+            color: var(--text-muted);
 
-        /* Desks */
-        .desk-stack {
             display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin-bottom: 40px;
-        }
 
-        .desk-row {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-muted);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .desk-header {
-            padding: 20px 24px;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            cursor: pointer;
+
+            gap: 10px;
+
+            padding: 14px 16px;
+
+            border-radius: 10px;
+
             transition: 0.3s;
         }
 
-        .desk-header:hover {
-            background-color: #1a243d;
+        .menu a:hover,
+        .menu .active a {
+
+            background: var(--bg-card);
+
+            color: white;
+
+            box-shadow: inset 4px 0 0 var(--blue);
         }
 
-        .desk-title-block {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+        .sidebar-footer {
 
-        .desk-number {
-            font-size: 14px;
-            font-weight: 700;
+            padding: 20px;
+
+            border-top: 1px solid var(--border);
+
+            text-align: center;
+
+            font-size: 11px;
+
             color: var(--text-muted);
-            background-color: var(--bg-deep);
-            padding: 4px 10px;
-            border-radius: 5px;
-            border: 1px solid var(--border-muted);
         }
 
-        .desk-name {
+        /* MAIN */
+
+        .main {
+
+            margin-left: 280px;
+
+            width: 100%;
+
+            padding: 40px;
+        }
+
+        /* HERO */
+
+        .hero {
+
+            background: linear-gradient(
+                135deg,
+                rgba(18, 26, 43, 0.95),
+                rgba(7, 11, 20, 0.95)
+            );
+
+            border: 1px solid rgba(56, 189, 248, 0.2);
+
+            border-radius: 18px;
+
+            padding: 34px;
+
+            margin-bottom: 36px;
+        }
+
+        .hero h2 {
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+
+            color: var(--text-muted);
+
+            max-width: 850px;
+
+            line-height: 1.7;
+
+            font-size: 15px;
+        }
+
+        /* SECTION */
+
+        .section-title {
+
+            font-size: 22px;
+
+            margin-bottom: 22px;
+
+            border-left: 4px solid var(--blue);
+
+            padding-left: 12px;
+        }
+
+        /* GRID */
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+            gap: 24px;
+
+            margin-bottom: 42px;
+        }
+
+        .card {
+
+            background: var(--bg-card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 16px;
+
+            padding: 24px;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+
+            transform: translateY(-5px);
+
+            border-color: var(--blue);
+
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.08);
+        }
+
+        .card h3 {
+
+            color: var(--blue);
+
             font-size: 16px;
+
+            margin-bottom: 14px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        .card p {
+
+            color: var(--text-muted);
+
+            line-height: 1.7;
+
+            font-size: 14px;
+
+            margin-bottom: 22px;
+        }
+
+        .btn {
+
+            display: inline-block;
+
+            width: 100%;
+
+            text-align: center;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            font-size: 13px;
+
+            color: white;
+
+            border: 1px solid var(--border);
+
+            background: linear-gradient(
+                135deg,
+                #1e293b,
+                #0f172a
+            );
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+
+            background: var(--blue);
+
+            color: #07111c;
+
+            border-color: var(--blue);
+        }
+
+        /* DESKS */
+
+        .desk-container {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 16px;
+
+            margin-bottom: 45px;
+        }
+
+        .desk {
+
+            background: var(--bg-card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 14px;
+
+            overflow: hidden;
+        }
+
+        .desk-head {
+
+            padding: 22px 24px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .desk-head:hover {
+
+            background: var(--bg-card-light);
+        }
+
+        .desk-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+        }
+
+        .desk-num {
+
+            padding: 5px 10px;
+
+            border-radius: 6px;
+
+            background: #0b101a;
+
+            border: 1px solid var(--border);
+
+            color: var(--text-muted);
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+        .desk-title {
+
+            font-size: 16px;
+
             font-weight: 600;
         }
 
         .badge {
+
+            padding: 5px 12px;
+
+            border-radius: 30px;
+
             font-size: 11px;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 20px;
+
+            font-weight: 700;
+
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        .badge.planning {
-            background: rgba(251, 191, 36, 0.1);
-            color: var(--amber-neon);
-            border: 1px solid rgba(251, 191, 36, 0.2);
+        .planning {
+
+            background: rgba(251, 191, 36, 0.12);
+
+            color: var(--amber);
         }
 
-        .badge.active {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--blue-neon);
-            border: 1px solid rgba(56, 189, 248, 0.2);
+        .active {
+
+            background: rgba(56, 189, 248, 0.12);
+
+            color: var(--blue);
         }
 
-        .badge.stable {
-            background: rgba(52, 211, 153, 0.1);
-            color: var(--emerald-neon);
-            border: 1px solid rgba(52, 211, 153, 0.2);
+        .stable {
+
+            background: rgba(52, 211, 153, 0.12);
+
+            color: var(--emerald);
         }
 
         .desk-body {
+
             display: none;
+
             padding: 24px;
-            background-color: rgba(9, 13, 22, 0.5);
-            border-top: 1px solid var(--border-muted);
+
+            border-top: 1px solid var(--border);
+
+            background: rgba(5, 8, 17, 0.6);
         }
 
         .desk-grid {
+
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+            gap: 18px;
         }
 
-        .internal-task-card {
-            background: #111827;
-            border: 1px solid var(--border-muted);
-            border-radius: 8px;
-            padding: 16px;
+        .mini-card {
+
+            background: #0f1726;
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            padding: 18px;
         }
 
-        .internal-task-card h4 {
-            margin: 0 0 10px 0;
+        .mini-card h4 {
+
+            margin-bottom: 10px;
+
             font-size: 13px;
+
+            color: var(--text-main);
+
             text-transform: uppercase;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
         }
 
-        .internal-task-card p {
+        .mini-card p {
+
+            color: var(--text-muted);
+
+            line-height: 1.6;
+
             font-size: 13px;
-            color: var(--text-muted);
-            margin: 0;
-            line-height: 1.5;
         }
 
-        /* Asset Box */
-        .asset-box {
-            background-color: #0b0f19;
-            border: 1px dashed var(--border-muted);
-            border-radius: 8px;
-            padding: 14px;
-            font-family: monospace;
-            font-size: 12px;
-            color: var(--silver-neon);
+        /* OUTREACH */
+
+        .outreach-box {
+
+            background: #0b1019;
+
+            border: 1px dashed var(--border);
+
+            border-radius: 12px;
+
+            padding: 18px;
+
             display: flex;
+
             justify-content: space-between;
+
+            gap: 20px;
+
             align-items: center;
-            gap: 15px;
+
             flex-wrap: wrap;
         }
 
+        .outreach-text {
+
+            color: #dbe7f3;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
         .copy-btn {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-muted);
-            color: var(--text-main);
-            padding: 7px 12px;
-            border-radius: 6px;
+
+            padding: 10px 16px;
+
+            border-radius: 8px;
+
+            border: 1px solid var(--border);
+
+            background: var(--bg-card);
+
+            color: white;
+
             cursor: pointer;
-            font-size: 11px;
-            transition: 0.25s;
+
+            transition: 0.3s;
         }
 
         .copy-btn:hover {
-            background-color: var(--blue-neon);
-            color: var(--bg-deep);
+
+            background: var(--blue);
+
+            color: #06111d;
         }
 
         .footer {
-            margin-top: 50px;
-            color: var(--text-muted);
-            font-size: 12px;
+
+            margin-top: 60px;
+
             text-align: center;
-            padding-bottom: 30px;
+
+            color: var(--text-muted);
+
+            font-size: 12px;
         }
 
-        /* Responsive */
+        /* RESPONSIVE */
+
         @media(max-width: 992px) {
 
             .sidebar {
-                width: 70px;
-                padding: 10px 5px;
+
+                width: 74px;
             }
 
-            .brand-logo-text,
-            .brand-tagline,
-            .sidebar-footer,
-            .nav-item span {
+            .brand h1,
+            .brand p,
+            .menu span,
+            .sidebar-footer {
+
                 display: none;
             }
 
-            .workspace {
-                margin-left: 70px;
-                padding: 20px;
+            .main {
+
+                margin-left: 74px;
+
+                padding: 22px;
             }
         }
     </style>
@@ -393,469 +577,622 @@
 
 <body>
 
-<script>
-    const AXON_CONFIG = {
+    <!-- SIDEBAR -->
 
-        charterPdf: "AXON_Official_Constitution_Charter.pdf",
+    <div class="sidebar">
 
-        registrationForm:
-        "https://docs.google.com/forms/d/e/1FAIpQLScF8_VZMg2k3OYVpqiz6wansWfe0DObcY8RUxnFvPlJy19nGQ/viewform",
+        <div class="brand">
 
-        masterDatabase: "#"
-    };
-</script>
+            <h1>AXON</h1>
 
-<!-- Sidebar -->
-<div class="sidebar">
+            <p>NGO Core Network</p>
 
-    <div class="brand-header">
-        <h1 class="brand-logo-text">AXON</h1>
-        <div class="brand-tagline">NGO Core Network</div>
+        </div>
+
+        <ul class="menu">
+
+            <li class="active">
+                <a href="#">
+                    🏠 <span>Dashboard Hub</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="https://instagram.com/axonmedofficial"
+                   target="_blank">
+
+                    📸 <span>Official Media</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript:void(0)"
+                   onclick="alert('All systems secured.')">
+
+                    🛡️ <span>Security Protocol</span>
+
+                </a>
+            </li>
+
+        </ul>
+
+        <div class="sidebar-footer">
+
+            AXON Executive OS v2.0
+
+        </div>
+
     </div>
 
-    <ul class="nav-menu">
-        <li class="nav-item active">
-            <a href="#">🏠 <span>Dashboard Hub</span></a>
-        </li>
+    <!-- MAIN -->
 
-        <li class="nav-item">
-            <a href="https://instagram.com/axonmedofficial" target="_blank">
-                📸 <span>Official Media</span>
-            </a>
-        </li>
+    <div class="main">
 
-        <li class="nav-item">
-            <a href="javascript:void(0)"
-               onclick="alert('All local parameters secure.')">
-                🛡️ <span>Security Protocol</span>
-            </a>
-        </li>
-    </ul>
+        <!-- HERO -->
 
-    <div class="sidebar-footer">
-        AXON v1.2 Operating System
-    </div>
-</div>
+        <div class="hero">
 
-<!-- Workspace -->
-<div class="workspace">
+            <h2>AXON Executive Command Engine</h2>
 
-    <div class="premium-banner">
-        <h2>AXON Command Engine</h2>
-
-        <p>
-            Welcome to the central command grid. Use this dashboard
-            to supervise operational wings, update campaign pipelines,
-            route incoming applicant forms, and distribute digital media assets.
-        </p>
-    </div>
-
-    <!-- Macro Controls -->
-    <div class="section-title">
-        Macro Administrative Controls
-    </div>
-
-    <div class="macro-grid">
-
-        <div class="macro-card">
-            <h3>📜 Governance Charter</h3>
-
-            <p class="macro-desc">
-                Access the official AXON structural rules,
-                line of command tracks, accountability guidelines,
-                and professional compliance sheets.
+            <p>
+                Centralized operational workspace for supervising
+                departments, monitoring recruitment systems,
+                distributing academic assets,
+                coordinating public health initiatives,
+                and managing institutional workflows.
             </p>
 
-            <a href="#"
-               id="charter-btn"
-               target="_blank"
-               class="action-btn">
-                View Master Constitution
-            </a>
         </div>
 
-        <div class="macro-card">
-            <h3>📋 Live Recruitment Intake</h3>
+        <!-- CONTROLS -->
 
-            <p class="macro-desc">
-                Direct interface control for checking applicant submissions,
-                requirements verification, and batch enrollment fields.
+        <div class="section-title">
+
+            Macro Administrative Controls
+
+        </div>
+
+        <div class="grid">
+
+            <!-- CARD 1 -->
+
+            <div class="card">
+
+                <h3>📜 Governance Charter</h3>
+
+                <p>
+                    Access the official AXON Constitution,
+                    leadership hierarchy,
+                    departmental governance structure,
+                    operational workflow,
+                    and institutional guidelines.
+                </p>
+
+                <a href="AXON_Official_Constitution_Charter.pdf"
+                   target="_blank"
+                   class="btn">
+
+                    Open Official Constitution PDF
+
+                </a>
+
+            </div>
+
+            <!-- CARD 2 -->
+
+            <div class="card">
+
+                <h3>📋 Live Recruitment Intake</h3>
+
+                <p>
+                    Review recruitment flow,
+                    onboard new applicants,
+                    and redirect candidates
+                    into specialized operational departments.
+                </p>
+
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScF8_VZMg2k3OYVpqiz6wansWfe0DObcY8RUxnFvPlJy19nGQ/viewform"
+                   target="_blank"
+                   class="btn">
+
+                    Open Recruitment Form
+
+                </a>
+
+            </div>
+
+            <!-- CARD 3 -->
+
+            <div class="card">
+
+                <h3>📊 Central Registry</h3>
+
+                <p>
+                    Access the centralized member database,
+                    application tracking sheets,
+                    onboarding responses,
+                    and internal organizational records.
+                </p>
+
+                <a href="#"
+                   class="btn">
+
+                    Launch Database
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- DESKS -->
+
+        <div class="section-title">
+
+            Specialized Functional Desks
+
+        </div>
+
+        <div class="desk-container">
+
+            <!-- DESK -->
+
+            <div class="desk">
+
+                <div class="desk-head"
+                     onclick="toggleDesk('desk1')">
+
+                    <div class="desk-left">
+
+                        <span class="desk-num">01</span>
+
+                        <span class="desk-title">
+                            Academics, Research & Capacity Building
+                        </span>
+
+                    </div>
+
+                    <span class="badge planning">
+
+                        Planning Masterclass
+
+                    </span>
+
+                </div>
+
+                <div class="desk-body" id="desk1">
+
+                    <div class="desk-grid">
+
+                        <div class="mini-card">
+
+                            <h4>Research Vault</h4>
+
+                            <p>
+                                Organizing study guides,
+                                research notes,
+                                protocol templates,
+                                and clinical learning assets.
+                            </p>
+
+                        </div>
+
+                        <div class="mini-card">
+
+                            <h4>Workshop Development</h4>
+
+                            <p>
+                                Planning research masterclasses,
+                                academic sessions,
+                                and skill-building workshops.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- DESK -->
+
+            <div class="desk">
+
+                <div class="desk-head"
+                     onclick="toggleDesk('desk2')">
+
+                    <div class="desk-left">
+
+                        <span class="desk-num">02</span>
+
+                        <span class="desk-title">
+                            Media, Design & Production
+                        </span>
+
+                    </div>
+
+                    <span class="badge active">
+
+                        Editing Reels
+
+                    </span>
+
+                </div>
+
+                <div class="desk-body" id="desk2">
+
+                    <div class="desk-grid">
+
+                        <div class="mini-card">
+
+                            <h4>Official Asset Kit</h4>
+
+                            <p>
+                                Maintaining premium slate-gray
+                                visual identity across all media.
+                            </p>
+
+                        </div>
+
+                        <div class="mini-card">
+
+                            <h4>Production Pipeline</h4>
+
+                            <p>
+                                Editing launch reels,
+                                captions,
+                                transitions,
+                                and awareness videos.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- DESK -->
+
+            <div class="desk">
+
+                <div class="desk-head"
+                     onclick="toggleDesk('desk3')">
+
+                    <div class="desk-left">
+
+                        <span class="desk-num">03</span>
+
+                        <span class="desk-title">
+                            Content, Strategy & Social Media
+                        </span>
+
+                    </div>
+
+                    <span class="badge stable">
+
+                        Scripts Complete
+
+                    </span>
+
+                </div>
+
+                <div class="desk-body" id="desk3">
+
+                    <div class="desk-grid">
+
+                        <div class="mini-card">
+
+                            <h4>Creative Writing</h4>
+
+                            <p>
+                                Writing post descriptions,
+                                awareness content,
+                                and engagement scripts.
+                            </p>
+
+                        </div>
+
+                        <div class="mini-card">
+
+                            <h4>Interaction System</h4>
+
+                            <p>
+                                Managing audience engagement,
+                                polls,
+                                comments,
+                                and awareness stories.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- DESK -->
+
+            <div class="desk">
+
+                <div class="desk-head"
+                     onclick="toggleDesk('desk4')">
+
+                    <div class="desk-left">
+
+                        <span class="desk-num">04</span>
+
+                        <span class="desk-title">
+                            PR, Sponsorships & Collaborations
+                        </span>
+
+                    </div>
+
+                    <span class="badge active">
+
+                        Seeding Batches
+
+                    </span>
+
+                </div>
+
+                <div class="desk-body" id="desk4">
+
+                    <div class="desk-grid">
+
+                        <div class="mini-card">
+
+                            <h4>Campus Distribution</h4>
+
+                            <p>
+                                Expanding outreach through
+                                student leaders,
+                                ambassadors,
+                                and partner institutions.
+                            </p>
+
+                        </div>
+
+                        <div class="mini-card">
+
+                            <h4>Advisor Outreach</h4>
+
+                            <p>
+                                Coordinating communication
+                                with faculty mentors
+                                and academic advisors.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- DESK -->
+
+            <div class="desk">
+
+                <div class="desk-head"
+                     onclick="toggleDesk('desk5')">
+
+                    <div class="desk-left">
+
+                        <span class="desk-num">05</span>
+
+                        <span class="desk-title">
+                            Operations, Events & Tech Support
+                        </span>
+
+                    </div>
+
+                    <span class="badge stable">
+
+                        Portal Verified
+
+                    </span>
+
+                </div>
+
+                <div class="desk-body" id="desk5">
+
+                    <div class="desk-grid">
+
+                        <div class="mini-card">
+
+                            <h4>System Controls</h4>
+
+                            <p>
+                                Managing portals,
+                                event systems,
+                                attendance logs,
+                                and digital infrastructure.
+                            </p>
+
+                        </div>
+
+                        <div class="mini-card">
+
+                            <h4>Webinar Management</h4>
+
+                            <p>
+                                Configuring webinar rooms,
+                                registrations,
+                                and certification flow.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- DESK -->
+
+            <div class="desk">
+
+                <div class="desk-head"
+                     onclick="toggleDesk('desk6')">
+
+                    <div class="desk-left">
+
+                        <span class="desk-num">06</span>
+
+                        <span class="desk-title">
+                            Public Health Awareness & Field Execution
+                        </span>
+
+                    </div>
+
+                    <span class="badge planning">
+
+                        Mapping Camps
+
+                    </span>
+
+                </div>
+
+                <div class="desk-body" id="desk6">
+
+                    <div class="desk-grid">
+
+                        <div class="mini-card">
+
+                            <h4>Campaign Coordination</h4>
+
+                            <p>
+                                Organizing awareness drives,
+                                blood donation programs,
+                                and health camps.
+                            </p>
+
+                        </div>
+
+                        <div class="mini-card">
+
+                            <h4>Field Operations</h4>
+
+                            <p>
+                                Managing volunteer deployment
+                                and outdoor execution logistics.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- OUTREACH -->
+
+        <div class="section-title">
+
+            Campus Ambassador Distribution Desk
+
+        </div>
+
+        <div class="card">
+
+            <p style="
+                color: var(--text-muted);
+                margin-bottom: 18px;
+                line-height: 1.7;
+                font-size: 14px;
+            ">
+
+                Ambassadors can directly copy this official
+                outreach package and circulate it across
+                local batch groups and college communities.
+
             </p>
 
-            <a href="#"
-               id="form-btn"
-               target="_blank"
-               class="action-btn">
-                Open Application Form
-            </a>
-        </div>
+            <div class="outreach-box">
 
-        <div class="macro-card">
-            <h3>📊 Core Data Router</h3>
+                <div class="outreach-text"
+                     id="outreachText">
 
-            <p class="macro-desc">
-                Managed by the Joint Secretary.
-                Review accepted Associate logs and spreadsheet databases.
-            </p>
-
-            <a href="#"
-               id="db-btn"
-               target="_blank"
-               class="action-btn">
-                Launch Central Registry
-            </a>
-        </div>
-
-    </div>
-
-    <!-- Functional Desks -->
-    <div class="section-title">
-        Specialized Functional Desks
-    </div>
-
-    <div class="desk-stack">
-
-        <!-- Desk 1 -->
-        <div class="desk-row">
-            <div class="desk-header" onclick="toggleDesk('desk1')">
-
-                <div class="desk-title-block">
-                    <span class="desk-number">01</span>
-
-                    <span class="desk-name">
-                        Academics, Research & Capacity Building
-                    </span>
-                </div>
-
-                <span class="badge planning">
-                    Planning Masterclass
-                </span>
-            </div>
-
-            <div class="desk-body" id="desk1">
-
-                <div class="desk-grid">
-
-                    <div class="internal-task-card">
-                        <h4>Core Operations</h4>
-
-                        <p>
-                            Compiling academic resource vaults,
-                            study guides, and research abstract layout sheets.
-                        </p>
-                    </div>
-
-                    <div class="internal-task-card">
-                        <h4>Active Timelines</h4>
-
-                        <p>
-                            Structuring the Student Research Protocol
-                            Introduction Masterclass.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Desk 2 -->
-        <div class="desk-row">
-            <div class="desk-header" onclick="toggleDesk('desk2')">
-
-                <div class="desk-title-block">
-                    <span class="desk-number">02</span>
-
-                    <span class="desk-name">
-                        Media, Design & Production
-                    </span>
-                </div>
-
-                <span class="badge active">
-                    Editing Reels
-                </span>
-            </div>
-
-            <div class="desk-body" id="desk2">
-
-                <div class="desk-grid">
-
-                    <div class="internal-task-card">
-                        <h4>Official Asset Kit</h4>
-
-                        <p>
-                            Enforcing official slate-gray and silver
-                            hex codes on all upcoming project flyers.
-                        </p>
-                    </div>
-
-                    <div class="internal-task-card">
-                        <h4>Production Queue</h4>
-
-                        <p>
-                            Adding captions, text transitions,
-                            and background audio loops to launch videos.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Desk 3 -->
-        <div class="desk-row">
-            <div class="desk-header" onclick="toggleDesk('desk3')">
-
-                <div class="desk-title-block">
-                    <span class="desk-number">03</span>
-
-                    <span class="desk-name">
-                        Content, Strategy & Social Media
-                    </span>
-                </div>
-
-                <span class="badge stable">
-                    Scripts Complete
-                </span>
-            </div>
-
-            <div class="desk-body" id="desk3">
-
-                <div class="desk-grid">
-
-                    <div class="internal-task-card">
-                        <h4>Copywriting Blocks</h4>
-
-                        <p>
-                            Writing high-engagement descriptions and
-                            keyword hashtags for post tracking.
-                        </p>
-                    </div>
-
-                    <div class="internal-task-card">
-                        <h4>Story Board</h4>
-
-                        <p>
-                            Drafting interactive quiz polls and
-                            awareness stories for upcoming campaigns.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Desk 4 -->
-        <div class="desk-row">
-            <div class="desk-header" onclick="toggleDesk('desk4')">
-
-                <div class="desk-title-block">
-                    <span class="desk-number">04</span>
-
-                    <span class="desk-name">
-                        PR, Sponsorships & Collaborations
-                    </span>
-                </div>
-
-                <span class="badge active">
-                    Seeding Batches
-                </span>
-            </div>
-
-            <div class="desk-body" id="desk4">
-
-                <div class="desk-grid">
-
-                    <div class="internal-task-card">
-                        <h4>Ambassador Distribution Matrix</h4>
-
-                        <p>
-                            Seeding recruitment assets across year batches
-                            and collaborating institutions.
-                        </p>
-                    </div>
-
-                    <div class="internal-task-card">
-                        <h4>Outreach Operations</h4>
-
-                        <p>
-                            Drafting formal communication templates
-                            for faculty and medical advisors.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Desk 5 -->
-        <div class="desk-row">
-            <div class="desk-header" onclick="toggleDesk('desk5')">
-
-                <div class="desk-title-block">
-                    <span class="desk-number">05</span>
-
-                    <span class="desk-name">
-                        Operations, Events & Tech Support
-                    </span>
-                </div>
-
-                <span class="badge stable">
-                    Portal Verified
-                </span>
-            </div>
-
-            <div class="desk-body" id="desk5">
-
-                <div class="desk-grid">
-
-                    <div class="internal-task-card">
-                        <h4>System Controls</h4>
-
-                        <p>
-                            Maintaining web code integrity,
-                            registration sheets, and feedback systems.
-                        </p>
-                    </div>
-
-                    <div class="internal-task-card">
-                        <h4>Webinar Pipelines</h4>
-
-                        <p>
-                            Configuring hosting rooms,
-                            attendance systems, and certification flow.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Desk 6 -->
-        <div class="desk-row">
-            <div class="desk-header" onclick="toggleDesk('desk6')">
-
-                <div class="desk-title-block">
-                    <span class="desk-number">06</span>
-
-                    <span class="desk-name">
-                        Public Health Awareness & Field Execution
-                    </span>
-                </div>
-
-                <span class="badge planning">
-                    Mapping Camps
-                </span>
-            </div>
-
-            <div class="desk-body" id="desk6">
-
-                <div class="desk-grid">
-
-                    <div class="internal-task-card">
-                        <h4>Campaign Design</h4>
-
-                        <p>
-                            Mapping locations for awareness drives,
-                            screening programs, and blood donation camps.
-                        </p>
-                    </div>
-
-                    <div class="internal-task-card">
-                        <h4>Field Logs</h4>
-
-                        <p>
-                            Developing volunteer deployment manuals
-                            and non-technical execution guidelines.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Ambassador Desk -->
-    <div class="section-title">
-        The Campus Ambassador Distribution Desk
-    </div>
-
-    <div class="macro-card" style="margin-bottom: 50px;">
-
-        <p class="macro-desc">
-            Ambassadors can copy this official outreach package directly
-            into their local batch and college groups.
-        </p>
-
-        <div class="asset-box">
-
-            <span id="outreach-text">
 🚀 AXON Recruitment Launch!
 
-Join the founding team of AXON — a student-led medical NGO focused on impact, awareness, and innovation.
+Join the founding team of AXON — a student-led medical NGO focused on research, academics, and public health awareness.
 
 Open Positions:
 • Departmental Associate
 • Campus Ambassador
 
-Apply Now:
+Apply Here:
 https://docs.google.com/forms/d/e/1FAIpQLScF8_VZMg2k3OYVpqiz6wansWfe0DObcY8RUxnFvPlJy19nGQ/viewform
-            </span>
 
-            <button class="copy-btn"
-                    onclick="copyAsset('outreach-text')">
-                Copy Text
-            </button>
+                </div>
+
+                <button class="copy-btn"
+                        onclick="copyText()">
+
+                    Copy Outreach Text
+
+                </button>
+
+            </div>
+
         </div>
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+
+            AXON Master Constitution & Executive Workspace •
+            Secure Operating System v2.0
+
+        </div>
+
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        AXON Non-Governmental Organization Workspace •
-        Executive System Hub • Secure Dashboard v1.2
-    </div>
+    <!-- SCRIPT -->
 
-</div>
+    <script>
 
-<!-- Scripts -->
-<script>
+        function toggleDesk(id) {
 
-    // Button Links
-    document.getElementById('charter-btn').href =
-        AXON_CONFIG.charterPdf;
+            const section =
+                document.getElementById(id);
 
-    document.getElementById('form-btn').href =
-        AXON_CONFIG.registrationForm;
+            if (
+                window.getComputedStyle(section).display === "none"
+            ) {
 
-    document.getElementById('db-btn').href =
-        AXON_CONFIG.masterDatabase;
+                section.style.display = "block";
 
-    // Expand Desk
-    function toggleDesk(id) {
+            } else {
 
-        const el = document.getElementById(id);
-
-        if (window.getComputedStyle(el).display === 'none') {
-            el.style.display = 'block';
-        } else {
-            el.style.display = 'none';
+                section.style.display = "none";
+            }
         }
-    }
 
-    // Copy Text
-    function copyAsset(id) {
+        function copyText() {
 
-        const textRange =
-            document.getElementById(id).innerText;
+            const text =
+                document.getElementById("outreachText").innerText;
 
-        navigator.clipboard.writeText(textRange);
+            navigator.clipboard.writeText(text);
 
-        alert(
-            "Outreach text copied successfully to clipboard!"
-        );
-    }
+            alert(
+                "Outreach text copied successfully!"
+            );
+        }
 
-</script>
+    </script>
 
 </body>
+
 </html>
