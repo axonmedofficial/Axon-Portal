@@ -24,27 +24,37 @@
             padding: 0;
             display: flex;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .sidebar { width: 280px; background-color: #060911; border-right: 1px solid var(--border-muted); position: fixed; height: 100vh; }
-        .workspace { margin-left: 280px; flex-grow: 1; padding: 40px; }
+        /* Sidebar Styles */
+        .sidebar { width: 280px; background-color: #060911; border-right: 1px solid var(--border-muted); position: fixed; height: 100vh; display: flex; flex-direction: column; }
+        .sidebar-header { padding: 30px; text-align: center; border-bottom: 1px solid var(--border-muted); }
+        .sidebar-header h1 { color: white; letter-spacing: 5px; margin: 0; }
+        
+        /* Main Workspace Styles */
+        .workspace { margin-left: 280px; flex-grow: 1; padding: 40px; box-sizing: border-box; }
         
         .premium-banner { background: linear-gradient(135deg, rgba(19, 27, 46, 0.8) 0%, rgba(9, 13, 22, 0.9) 100%); border: 1px solid var(--border-glow); border-radius: 12px; padding: 30px; margin-bottom: 35px; }
         
         .macro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-        .macro-card { background: var(--bg-card); border: 1px solid var(--border-muted); border-radius: 10px; padding: 24px; }
+        .macro-card { background: var(--bg-card); border: 1px solid var(--border-muted); border-radius: 10px; padding: 24px; transition: 0.3s; }
+        .macro-card:hover { border-color: var(--blue-neon); }
         
-        .action-btn { display: block; text-align: center; background: #1e293b; color: white; text-decoration: none; padding: 12px; border-radius: 6px; font-weight: 600; border: 1px solid var(--border-muted); margin-top: 15px; }
+        .action-btn { display: block; text-align: center; background: #1e293b; color: white; text-decoration: none; padding: 12px; border-radius: 6px; font-weight: 600; border: 1px solid var(--border-muted); margin-top: 15px; transition: 0.3s; }
         .action-btn:hover { background: var(--blue-neon); color: black; }
         
-        @media(max-width: 992px) { .sidebar { display: none; } .workspace { margin-left: 0; } }
+        @media(max-width: 992px) { .sidebar { display: none; } .workspace { margin-left: 0; padding: 20px; } }
     </style>
 </head>
 <body>
 
     <div class="sidebar">
-        <div style="padding: 30px; text-align: center;">
-            <h1 style="color: white; letter-spacing: 5px;">AXON</h1>
+        <div class="sidebar-header">
+            <h1>AXON</h1>
+        </div>
+        <div style="padding: 20px; color: var(--text-muted); font-size: 12px; text-align: center;">
+            NGO Core Network<br>Dashboard v1.2
         </div>
     </div>
 
@@ -57,13 +67,13 @@
         <div class="macro-grid">
             <div class="macro-card">
                 <h3>📜 Governance Charter</h3>
-                <p style="color: var(--text-muted);">Access the official AXON structural rules.</p>
+                <p style="color: var(--text-muted);">Access the official AXON structural rules and leadership charter.</p>
                 <a href="AXON_Official_Constitution_Charter.pdf" target="_blank" class="action-btn">View Master Constitution</a>
             </div>
             
             <div class="macro-card">
                 <h3>📋 Recruitment Intake</h3>
-                <p style="color: var(--text-muted);">Link for student applications and member registrations.</p>
+                <p style="color: var(--text-muted);">Official portal for student applications and team registrations.</p>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScF8_VZMg2k3OYVpqiz6wansWfe0DObcY8RUxnFvPlJy19nGQ/viewform" target="_blank" class="action-btn">Open Application Form</a>
             </div>
         </div>
