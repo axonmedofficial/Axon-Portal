@@ -30,7 +30,7 @@
             overflow-x: hidden;
         }
 
-        /* --- ADVANCED SIDEBAR --- */
+        /* Sidebar Layout */
         .sidebar {
             width: 280px;
             background-color: #060911;
@@ -106,7 +106,7 @@
             background-color: #04060b;
         }
 
-        /* --- MAIN HUB LAYOUT --- */
+        /* Main Hub Workspace */
         .workspace {
             margin-left: 280px;
             flex-grow: 1;
@@ -115,7 +115,6 @@
             max-width: 1400px;
         }
 
-        /* GLASS BANNER */
         .premium-banner {
             background: linear-gradient(135deg, rgba(19, 27, 46, 0.8) 0%, rgba(9, 13, 22, 0.9) 100%);
             border: 1px solid var(--border-glow);
@@ -128,14 +127,6 @@
             overflow: hidden;
         }
 
-        .premium-banner::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 150px; height: 150px;
-            background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, rgba(0,0,0,0) 70%);
-        }
-
         .premium-banner h2 {
             margin: 0 0 8px 0;
             font-size: 26px;
@@ -143,7 +134,7 @@
             letter-spacing: -0.5px;
         }
 
-        /* INTERACTIVE MACRO CONTROLS */
+        /* Macro Controls Grid */
         .macro-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -207,7 +198,7 @@
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
         }
 
-        /* --- INTERACTIVE DEPARTMENTAL ACCORDIONS --- */
+        /* Department Sections */
         .section-title {
             font-size: 20px;
             font-weight: 700;
@@ -307,7 +298,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- ASSET COPYBOX TOOL --- */
         .asset-box {
             background-color: #0b0f19;
             border: 1px dashed var(--border-muted);
@@ -337,7 +327,6 @@
             color: var(--bg-deep);
         }
 
-        /* GENERAL RESPONSIVENESS */
         @media(max-width: 992px) {
             .sidebar { width: 70px; padding: 10px 5px; }
             .brand-logo-text, .brand-tagline, .sidebar-footer, .nav-item span { display: none; }
@@ -349,9 +338,10 @@
 
     <script>
         const AXON_CONFIG = {
-            charterPdf: "#",       // Link to Master Charter PDF
-            registrationForm: "#", // Link to Google Recruitment Form
-            masterDatabase: "#"    // Link to Central Google Sheets Responses
+            // Directly referencing your active project document path inside the repository workspace
+            charterPdf: "AXON_Official_Constitution_Charter.pdf", 
+            registrationForm: "#", // Replace with your live Google Recruitment Form URL
+            masterDatabase: "#"    // Replace with your Central Google Sheets Responses URL
         };
     </script>
 
@@ -363,7 +353,7 @@
         <ul class="nav-menu">
             <li class="nav-item active"><a href="#">🏠 <span>Dashboard Hub</span></a></li>
             <li class="nav-item"><a href="https://instagram.com/axonmedofficial" target="_blank">📸 <span>Official Media</span></a></li>
-            <li class="nav-item"><a href="javascript:void(0)" onclick="alert('System secure. All systems functional.')">🛡️ <span>Security Protocol</span></a></li>
+            <li class="nav-item"><a href="javascript:void(0)" onclick="alert('All local parameters secure.')">🛡️ <span>Security Protocol</span></a></li>
         </ul>
         <div class="sidebar-footer">
             AXON v1.2 Operating System
@@ -531,7 +521,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="section-title">The Campus Ambassador Distribution Desk</div>
@@ -551,7 +540,7 @@
     </div>
 
     <script>
-        // Apply Config Values to Links
+        // Mapping elements directly to the static and functional configuration metrics
         document.getElementById('charter-btn').href = AXON_CONFIG.charterPdf;
         document.getElementById('form-btn').href = AXON_CONFIG.registrationForm;
         document.getElementById('db-btn').href = AXON_CONFIG.masterDatabase;
