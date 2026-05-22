@@ -2,19 +2,23 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
 
     <title>AXON | Executive Command Portal</title>
 
     <style>
+
         :root {
 
             --bg-main: #070b14;
             --bg-card: #121a2b;
-            --bg-card-light: #172235;
+            --bg-card-light: #182438;
 
-            --border: #24324d;
+            --border: #26344f;
 
             --text-main: #f1f5f9;
             --text-muted: #94a3b8;
@@ -25,6 +29,7 @@
         }
 
         * {
+
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -55,9 +60,9 @@
 
             border-right: 1px solid var(--border);
 
-            position: fixed;
-
             height: 100vh;
+
+            position: fixed;
 
             display: flex;
 
@@ -70,20 +75,24 @@
 
             padding: 34px 24px;
 
-            text-align: center;
-
             border-bottom: 1px solid var(--border);
+
+            text-align: center;
         }
 
         .brand h1 {
 
-            font-size: 28px;
+            font-size: 30px;
 
             font-weight: 800;
 
             letter-spacing: 5px;
 
-            background: linear-gradient(135deg, #fff, #94a3b8);
+            background: linear-gradient(
+                135deg,
+                #ffffff,
+                #94a3b8
+            );
 
             -webkit-background-clip: text;
 
@@ -92,22 +101,22 @@
 
         .brand p {
 
-            color: var(--blue);
+            margin-top: 6px;
 
             font-size: 10px;
 
-            margin-top: 6px;
-
             letter-spacing: 2px;
+
+            color: var(--blue);
 
             text-transform: uppercase;
         }
 
         .menu {
 
-            padding: 20px 12px;
-
             list-style: none;
+
+            padding: 20px 12px;
 
             flex-grow: 1;
         }
@@ -119,19 +128,19 @@
 
         .menu a {
 
-            text-decoration: none;
-
-            color: var(--text-muted);
-
             display: flex;
 
             align-items: center;
 
-            gap: 10px;
+            gap: 12px;
 
             padding: 14px 16px;
 
+            text-decoration: none;
+
             border-radius: 10px;
+
+            color: var(--text-muted);
 
             transition: 0.3s;
         }
@@ -154,9 +163,9 @@
 
             text-align: center;
 
-            font-size: 11px;
-
             color: var(--text-muted);
+
+            font-size: 11px;
         }
 
         /* MAIN */
@@ -180,34 +189,34 @@
                 rgba(7, 11, 20, 0.95)
             );
 
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            border: 1px solid rgba(56, 189, 248, 0.18);
 
-            border-radius: 18px;
+            border-radius: 20px;
 
-            padding: 34px;
+            padding: 36px;
 
-            margin-bottom: 36px;
+            margin-bottom: 38px;
         }
 
         .hero h2 {
 
-            font-size: 32px;
+            font-size: 34px;
 
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .hero p {
 
             color: var(--text-muted);
 
-            max-width: 850px;
+            line-height: 1.8;
 
-            line-height: 1.7;
+            max-width: 900px;
 
             font-size: 15px;
         }
 
-        /* SECTION */
+        /* TITLES */
 
         .section-title {
 
@@ -239,7 +248,7 @@
 
             border: 1px solid var(--border);
 
-            border-radius: 16px;
+            border-radius: 18px;
 
             padding: 24px;
 
@@ -252,16 +261,16 @@
 
             border-color: var(--blue);
 
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.08);
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.08);
         }
 
         .card h3 {
 
             color: var(--blue);
 
-            font-size: 16px;
-
             margin-bottom: 14px;
+
+            font-size: 16px;
 
             text-transform: uppercase;
 
@@ -272,11 +281,11 @@
 
             color: var(--text-muted);
 
-            line-height: 1.7;
+            line-height: 1.8;
 
             font-size: 14px;
 
-            margin-bottom: 22px;
+            margin-bottom: 24px;
         }
 
         .btn {
@@ -285,21 +294,21 @@
 
             width: 100%;
 
-            text-align: center;
-
             padding: 14px;
 
             border-radius: 10px;
 
-            text-decoration: none;
+            border: 1px solid var(--border);
 
-            font-weight: 600;
+            text-align: center;
+
+            text-decoration: none;
 
             font-size: 13px;
 
-            color: white;
+            font-weight: 600;
 
-            border: 1px solid var(--border);
+            color: white;
 
             background: linear-gradient(
                 135deg,
@@ -321,7 +330,7 @@
 
         /* DESKS */
 
-        .desk-container {
+        .desk-wrap {
 
             display: flex;
 
@@ -329,7 +338,7 @@
 
             gap: 16px;
 
-            margin-bottom: 45px;
+            margin-bottom: 44px;
         }
 
         .desk {
@@ -338,7 +347,7 @@
 
             border: 1px solid var(--border);
 
-            border-radius: 14px;
+            border-radius: 16px;
 
             overflow: hidden;
         }
@@ -372,21 +381,21 @@
             gap: 14px;
         }
 
-        .desk-num {
+        .desk-number {
+
+            background: #0d1420;
+
+            border: 1px solid var(--border);
 
             padding: 5px 10px;
 
             border-radius: 6px;
 
-            background: #0b101a;
-
-            border: 1px solid var(--border);
-
             color: var(--text-muted);
 
             font-size: 13px;
 
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .desk-title {
@@ -411,21 +420,21 @@
 
         .planning {
 
-            background: rgba(251, 191, 36, 0.12);
+            background: rgba(251, 191, 36, 0.1);
 
             color: var(--amber);
         }
 
         .active {
 
-            background: rgba(56, 189, 248, 0.12);
+            background: rgba(56, 189, 248, 0.1);
 
             color: var(--blue);
         }
 
         .stable {
 
-            background: rgba(52, 211, 153, 0.12);
+            background: rgba(52, 211, 153, 0.1);
 
             color: var(--emerald);
         }
@@ -438,7 +447,7 @@
 
             border-top: 1px solid var(--border);
 
-            background: rgba(5, 8, 17, 0.6);
+            background: rgba(5, 8, 17, 0.55);
         }
 
         .desk-grid {
@@ -452,7 +461,7 @@
 
         .mini-card {
 
-            background: #0f1726;
+            background: #0e1624;
 
             border: 1px solid var(--border);
 
@@ -467,8 +476,6 @@
 
             font-size: 13px;
 
-            color: var(--text-main);
-
             text-transform: uppercase;
         }
 
@@ -476,7 +483,7 @@
 
             color: var(--text-muted);
 
-            line-height: 1.6;
+            line-height: 1.7;
 
             font-size: 13px;
         }
@@ -485,11 +492,11 @@
 
         .outreach-box {
 
-            background: #0b1019;
+            background: #0d1420;
 
             border: 1px dashed var(--border);
 
-            border-radius: 12px;
+            border-radius: 14px;
 
             padding: 18px;
 
@@ -497,20 +504,20 @@
 
             justify-content: space-between;
 
-            gap: 20px;
-
             align-items: center;
+
+            gap: 20px;
 
             flex-wrap: wrap;
         }
 
         .outreach-text {
 
-            color: #dbe7f3;
+            line-height: 1.9;
 
             font-size: 13px;
 
-            line-height: 1.8;
+            color: #dbe6f3;
         }
 
         .copy-btn {
@@ -537,6 +544,8 @@
             color: #06111d;
         }
 
+        /* FOOTER */
+
         .footer {
 
             margin-top: 60px;
@@ -554,7 +563,7 @@
 
             .sidebar {
 
-                width: 74px;
+                width: 76px;
             }
 
             .brand h1,
@@ -567,12 +576,14 @@
 
             .main {
 
-                margin-left: 74px;
+                margin-left: 76px;
 
                 padding: 22px;
             }
         }
+
     </style>
+
 </head>
 
 <body>
@@ -592,27 +603,35 @@
         <ul class="menu">
 
             <li class="active">
+
                 <a href="#">
+
                     🏠 <span>Dashboard Hub</span>
+
                 </a>
+
             </li>
 
             <li>
+
                 <a href="https://instagram.com/axonmedofficial"
                    target="_blank">
 
                     📸 <span>Official Media</span>
 
                 </a>
+
             </li>
 
             <li>
+
                 <a href="javascript:void(0)"
                    onclick="alert('All systems secured.')">
 
                     🛡️ <span>Security Protocol</span>
 
                 </a>
+
             </li>
 
         </ul>
@@ -636,11 +655,13 @@
             <h2>AXON Executive Command Engine</h2>
 
             <p>
+
                 Centralized operational workspace for supervising
-                departments, monitoring recruitment systems,
-                distributing academic assets,
-                coordinating public health initiatives,
-                and managing institutional workflows.
+                departments, managing institutional workflows,
+                coordinating academic activities,
+                expanding outreach networks,
+                and driving public health initiatives.
+
             </p>
 
         </div>
@@ -655,21 +676,23 @@
 
         <div class="grid">
 
-            <!-- CARD 1 -->
+            <!-- GOVERNANCE PDF -->
 
             <div class="card">
 
                 <h3>📜 Governance Charter</h3>
 
                 <p>
+
                     Access the official AXON Constitution,
                     leadership hierarchy,
-                    departmental governance structure,
-                    operational workflow,
-                    and institutional guidelines.
+                    governance framework,
+                    operational structure,
+                    and executive command system.
+
                 </p>
 
-                <a href="AXON_Official_Constitution_Charter.pdf"
+                <a href="https://drive.google.com/file/d/1shNwVOOw386t2cdnYWvbRxny8XE8fiYG/view?usp=drivesdk"
                    target="_blank"
                    class="btn">
 
@@ -679,17 +702,19 @@
 
             </div>
 
-            <!-- CARD 2 -->
+            <!-- GOOGLE FORM -->
 
             <div class="card">
 
                 <h3>📋 Live Recruitment Intake</h3>
 
                 <p>
-                    Review recruitment flow,
-                    onboard new applicants,
-                    and redirect candidates
+
+                    Monitor applicant flow,
+                    onboard new members,
+                    and direct candidates
                     into specialized operational departments.
+
                 </p>
 
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScF8_VZMg2k3OYVpqiz6wansWfe0DObcY8RUxnFvPlJy19nGQ/viewform"
@@ -702,23 +727,25 @@
 
             </div>
 
-            <!-- CARD 3 -->
+            <!-- DATABASE -->
 
             <div class="card">
 
                 <h3>📊 Central Registry</h3>
 
                 <p>
-                    Access the centralized member database,
-                    application tracking sheets,
-                    onboarding responses,
-                    and internal organizational records.
+
+                    Access centralized onboarding records,
+                    internal databases,
+                    member directories,
+                    and organizational response sheets.
+
                 </p>
 
                 <a href="#"
                    class="btn">
 
-                    Launch Database
+                    Launch Registry
 
                 </a>
 
@@ -726,7 +753,7 @@
 
         </div>
 
-        <!-- DESKS -->
+        <!-- FUNCTIONAL DESKS -->
 
         <div class="section-title">
 
@@ -734,9 +761,7 @@
 
         </div>
 
-        <div class="desk-container">
-
-            <!-- DESK -->
+        <div class="desk-wrap">
 
             <div class="desk">
 
@@ -745,10 +770,12 @@
 
                     <div class="desk-left">
 
-                        <span class="desk-num">01</span>
+                        <span class="desk-number">01</span>
 
                         <span class="desk-title">
+
                             Academics, Research & Capacity Building
+
                         </span>
 
                     </div>
@@ -770,10 +797,12 @@
                             <h4>Research Vault</h4>
 
                             <p>
-                                Organizing study guides,
-                                research notes,
-                                protocol templates,
-                                and clinical learning assets.
+
+                                Organizing academic resources,
+                                clinical notes,
+                                research protocols,
+                                and study assets.
+
                             </p>
 
                         </div>
@@ -783,9 +812,11 @@
                             <h4>Workshop Development</h4>
 
                             <p>
+
                                 Planning research masterclasses,
-                                academic sessions,
-                                and skill-building workshops.
+                                practical training sessions,
+                                and academic seminars.
+
                             </p>
 
                         </div>
@@ -796,8 +827,6 @@
 
             </div>
 
-            <!-- DESK -->
-
             <div class="desk">
 
                 <div class="desk-head"
@@ -805,10 +834,12 @@
 
                     <div class="desk-left">
 
-                        <span class="desk-num">02</span>
+                        <span class="desk-number">02</span>
 
                         <span class="desk-title">
+
                             Media, Design & Production
+
                         </span>
 
                     </div>
@@ -830,8 +861,10 @@
                             <h4>Official Asset Kit</h4>
 
                             <p>
-                                Maintaining premium slate-gray
-                                visual identity across all media.
+
+                                Maintaining premium visual identity
+                                and branding systems.
+
                             </p>
 
                         </div>
@@ -841,10 +874,11 @@
                             <h4>Production Pipeline</h4>
 
                             <p>
-                                Editing launch reels,
-                                captions,
-                                transitions,
-                                and awareness videos.
+
+                                Editing reels,
+                                awareness videos,
+                                and promotional content.
+
                             </p>
 
                         </div>
@@ -855,8 +889,6 @@
 
             </div>
 
-            <!-- DESK -->
-
             <div class="desk">
 
                 <div class="desk-head"
@@ -864,10 +896,12 @@
 
                     <div class="desk-left">
 
-                        <span class="desk-num">03</span>
+                        <span class="desk-number">03</span>
 
                         <span class="desk-title">
+
                             Content, Strategy & Social Media
+
                         </span>
 
                     </div>
@@ -889,22 +923,25 @@
                             <h4>Creative Writing</h4>
 
                             <p>
-                                Writing post descriptions,
-                                awareness content,
-                                and engagement scripts.
+
+                                Writing captions,
+                                awareness scripts,
+                                and educational content.
+
                             </p>
 
                         </div>
 
                         <div class="mini-card">
 
-                            <h4>Interaction System</h4>
+                            <h4>Audience Interaction</h4>
 
                             <p>
-                                Managing audience engagement,
-                                polls,
-                                comments,
-                                and awareness stories.
+
+                                Managing polls,
+                                stories,
+                                and online engagement.
+
                             </p>
 
                         </div>
@@ -915,8 +952,6 @@
 
             </div>
 
-            <!-- DESK -->
-
             <div class="desk">
 
                 <div class="desk-head"
@@ -924,10 +959,12 @@
 
                     <div class="desk-left">
 
-                        <span class="desk-num">04</span>
+                        <span class="desk-number">04</span>
 
                         <span class="desk-title">
+
                             PR, Sponsorships & Collaborations
+
                         </span>
 
                     </div>
@@ -949,22 +986,23 @@
                             <h4>Campus Distribution</h4>
 
                             <p>
-                                Expanding outreach through
-                                student leaders,
-                                ambassadors,
-                                and partner institutions.
+
+                                Expanding outreach through ambassadors
+                                and institutional collaborations.
+
                             </p>
 
                         </div>
 
                         <div class="mini-card">
 
-                            <h4>Advisor Outreach</h4>
+                            <h4>Advisor Coordination</h4>
 
                             <p>
-                                Coordinating communication
-                                with faculty mentors
-                                and academic advisors.
+
+                                Coordinating communication with
+                                mentors and faculty advisors.
+
                             </p>
 
                         </div>
@@ -975,8 +1013,6 @@
 
             </div>
 
-            <!-- DESK -->
-
             <div class="desk">
 
                 <div class="desk-head"
@@ -984,10 +1020,12 @@
 
                     <div class="desk-left">
 
-                        <span class="desk-num">05</span>
+                        <span class="desk-number">05</span>
 
                         <span class="desk-title">
+
                             Operations, Events & Tech Support
+
                         </span>
 
                     </div>
@@ -1009,10 +1047,11 @@
                             <h4>System Controls</h4>
 
                             <p>
-                                Managing portals,
-                                event systems,
-                                attendance logs,
-                                and digital infrastructure.
+
+                                Managing event systems,
+                                webinar infrastructure,
+                                and attendance tracking.
+
                             </p>
 
                         </div>
@@ -1022,9 +1061,10 @@
                             <h4>Webinar Management</h4>
 
                             <p>
-                                Configuring webinar rooms,
-                                registrations,
-                                and certification flow.
+
+                                Configuring webinar rooms
+                                and certification workflows.
+
                             </p>
 
                         </div>
@@ -1035,8 +1075,6 @@
 
             </div>
 
-            <!-- DESK -->
-
             <div class="desk">
 
                 <div class="desk-head"
@@ -1044,10 +1082,12 @@
 
                     <div class="desk-left">
 
-                        <span class="desk-num">06</span>
+                        <span class="desk-number">06</span>
 
                         <span class="desk-title">
+
                             Public Health Awareness & Field Execution
+
                         </span>
 
                     </div>
@@ -1069,9 +1109,11 @@
                             <h4>Campaign Coordination</h4>
 
                             <p>
+
                                 Organizing awareness drives,
-                                blood donation programs,
-                                and health camps.
+                                health camps,
+                                and public initiatives.
+
                             </p>
 
                         </div>
@@ -1081,8 +1123,11 @@
                             <h4>Field Operations</h4>
 
                             <p>
-                                Managing volunteer deployment
-                                and outdoor execution logistics.
+
+                                Managing volunteers,
+                                logistics,
+                                and outdoor execution.
+
                             </p>
 
                         </div>
@@ -1108,13 +1153,13 @@
             <p style="
                 color: var(--text-muted);
                 margin-bottom: 18px;
-                line-height: 1.7;
+                line-height: 1.8;
                 font-size: 14px;
             ">
 
-                Ambassadors can directly copy this official
-                outreach package and circulate it across
-                local batch groups and college communities.
+                Ambassadors can directly copy this official outreach
+                package and circulate it across local batch groups
+                and campus communities.
 
             </p>
 
@@ -1151,8 +1196,8 @@ https://docs.google.com/forms/d/e/1FAIpQLScF8_VZMg2k3OYVpqiz6wansWfe0DObcY8RUxnF
 
         <div class="footer">
 
-            AXON Master Constitution & Executive Workspace •
-            Secure Operating System v2.0
+            AXON Executive Workspace •
+            Secure Operational System v2.0
 
         </div>
 
@@ -1164,18 +1209,18 @@ https://docs.google.com/forms/d/e/1FAIpQLScF8_VZMg2k3OYVpqiz6wansWfe0DObcY8RUxnF
 
         function toggleDesk(id) {
 
-            const section =
+            const desk =
                 document.getElementById(id);
 
             if (
-                window.getComputedStyle(section).display === "none"
+                window.getComputedStyle(desk).display === "none"
             ) {
 
-                section.style.display = "block";
+                desk.style.display = "block";
 
             } else {
 
-                section.style.display = "none";
+                desk.style.display = "none";
             }
         }
 
